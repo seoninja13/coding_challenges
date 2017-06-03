@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+<button type="button" onclick="loadJSONDoc()">Get my CD collection</button>
+<h2>Use the XMLHttpRequest to get the content of a file.</h2>
+<p>The content is written in JSON format, and can easily be converted into a JavaScript object.</p>
+
+<table id="demo"></table>
+
+<script>
+function loadJSONDoc()
+{
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        myObj = JSON.parse(this.responseText);
+        document.getElementById("demo").innerHTML = myObj.name;
+    }
+};
+xmlhttp.open("GET", "mydata.txt", true);
+xmlhttp.send();
+}
+
+</script>
+
+<p>Take a look at <a href="mydata.txt" target="_blank">mydata.txt</a></p>
+
+</body>
+</html>

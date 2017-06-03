@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+</style>
+<body>
+ <!-- BEGIN Sorting out "Artist" --> 
+<button id="sort_author" onclick="sortAuthor()">Sort</button>
+<!-- END Sorting out "Artist" --> 
+
+<button type="button" onclick="loadJSONDoc()">Get my CD collection</button>
+<br><br>
+<table id="mymusic"></table>
+<p id="test"></p>
+
+<script>
+function loadJSONDoc()
+{
+  var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function()
+    {
+      if (this.readyState == 4 && this.status == 200) {
+       myFunction(this);
+    }
+};
+  xmlhttp.open("GET", "mydata.txt", true);
+  xmlhttp.send();
+}
+function myFunction(json)
+{
+  var i;
+  //var xmlDoc = xml.responseXML;
+  var jsonTxt = json.responseText;
+  //console.log(jsonTxt);
+  var jsonObj = JSON.parse(jsonTxt);
+  console.log(jsonObj);
+
+  var x = jsonObj.CATALOG;
+  //console.log(x);
+  var y = jsonObj.CATALOG.CD;
+  //console.log(y);
+
+  var table="<tr><th>Artist</th><th>Title</th></tr>";
+  sortit = []; // global variable to be accesed by sortAuthor()
+  for(i=0; i<y.length; i++)
+  {  
+    console.log(y[i].TITLE);
+    //console.log(typeof(sortit));
+    //console.log("----------------------")
+    sortit.push(y[i].TITLE)
+    console.log(typeof(sortit)); // array with all the pushed elem.
+ 
+    table += "<tr><td>" + y[i].ARTIST +
+    "</td><td>" + y[i].TITLE +
+    "</td></tr>";
+  }
+  console.log(sortit); // is an array
+  document.getElementById("mymusic").innerHTML = table;
+}
+
+function sortAuthor()
+{
+  var s=sortit.sort();
+  //console.log(sortit.sort()); 
+   document.getElementsByTagName("td")[1].innerHTML = s[0]; 
+}
+</script>
+<!-- BEGIN "To Do Notes"" -->
+  Complete "for loop" , bubble sort or quick sort. Each iteration will place the sorted "Title" or "Artist, etc in the corrsponding <td> field.
+ <!-- END "To Do Notes"" -->
+
+</body>
+</html>

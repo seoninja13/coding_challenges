@@ -1,0 +1,3 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+15:44:53	38817/38817	---M-Z	404	error ('Not%20Found')	text/html	etag:%220a55de38726e2baf85271a1fbc8a6f5b%22	http://www.top10homeremedies.com/superfoods/top-10-superfoods-for-weight-loss.htm	/home/ninja13/Documents/Coding_Dojo/MyProjects/Coding_Chalenges/Brightedge/YT_API/downloaded_sites/www.top10homeremedies.com/superfoods/top-10-superfoods-for-weight-loss.0.delayed	(from )
+15:44:53	5522/5522	---M--	200	added ('OK')	text/plain	etag:%221592-531426a4-0%22	http://www.top10homeremedies.com/robots.txt		(from )

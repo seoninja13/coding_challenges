@@ -1,0 +1,12 @@
+HTTrack3.48-21 launched on Wed, 29 Mar 2017 10:38:28 at http://logicworldinfotech.com/Ivan/
+(httrack http://logicworldinfotech.com/Ivan/ -O /home/ninja13/Documents/Coding_Dojo/MyProjects/Coding_Chalenges/Brightedge/Media_API/download_live/ )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+10:38:35	Error: 	"Not Found" (404) at link logicworldinfotech.com/Ivan/images/blank.gif (from logicworldinfotech.com/Ivan/css/jquery.fancybox.css)
+
+HTTrack Website Copier/3.48-21 mirror complete in 7 seconds : 16 links scanned, 14 files written (143514 bytes overall) [78029 bytes received at 11147 bytes/sec], 114045 bytes transferred using HTTP compression in 9 files, ratio 36%
+(1 errors, 0 warnings, 0 messages)

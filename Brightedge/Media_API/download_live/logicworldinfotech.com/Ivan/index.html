@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Popular photos/videos</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Fancybox -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css">
+    <!-- Custom -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <script src="js/500px.js"></script>
+    <script src="js/YouTubeScript.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+     <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Isotope -->
+    <script src="js/isotope.min.js"></script>
+    <!-- Fancybox -->
+    <script src="js/jquery.fancybox.pack.js"></script>
+    <!-- Custom -->
+    <script src="js/main.js"></script>
+    <script src="js/fliplightbox.min.js"></script>
+     <script type="text/javascript">
+         $('body').flipLightBox()
+    </script>
+
+
+
+</head>
+<body>
+
+    <script>
+        $(function () {
+            _500px.init({
+                sdk_key: '57c16df5cc7d80ee397110e5724157734d2ce9c3'
+            });
+            // When the user logs in we will pull their favorite photos
+            _500px.on('authorization_obtained', function () {
+                $('#not_logged_in').hide();
+                $('#logged_in').show();
+                // Get my user id
+                _500px.api('/users', function (response) {
+                    var me = response.data.user;
+                    // Get my favorites
+                    _500px.api('/photos', { feature: 'popular', user_id: me.id, image_size: 4 }, function (response) {
+                        if (response.data.photos.length == 0) {
+                            ketla
+                            alert('You have no favorite photos.');
+                        } else {
+                            $.each(response.data.photos, function () {
+                                var _img500px = "";
+                                _img500px = _img500px + "<div class='col-md-3 col-sm-3 col-xs-12 isotopeSelector 500px'>";
+                                //_img500px = _img500px + "<article class='item-box'>";
+                                _img500px = _img500px + "<article class='item-box'>";
+                                _img500px = _img500px + "<figure>";
+                                _img500px = _img500px + "<img src=" + this.image_url + " alt=''>";
+                                _img500px = _img500px + " <div class='overlay-background'>";
+                                _img500px = _img500px + "<div class='inner'></div>";
+                                _img500px = _img500px + '</div>';
+                                _img500px = _img500px + "<div class='overlay'>";
+                                _img500px = _img500px + "<div class='inner-overlay'>";
+                                _img500px = _img500px + "<div class='inner-overlay-content with-icons'>";
+                                _img500px = _img500px + "<a class='fancybox-pop' href=" + this.image_url + "><i class='fa fa-search'></i></a>";
+                                _img500px = _img500px + "</div>";
+                                _img500px = _img500px + "</div>";
+                                _img500px = _img500px + "</div>";
+                                _img500px = _img500px + "</figure>";
+                                _img500px = _img500px + "</article>";
+                                _img500px = _img500px + "</div>";
+                                //$('#isotopeContainer').append('<img src="' + this.image_url + '" />');
+                                $('#isotopeContainer').append(_img500px);
+                            });
+                        }
+                    });
+                });
+            });
+            _500px.on('logout', function () {
+
+                //var _notLogg = "";
+                //_notLogg = _notLogg+"<div class='col-md-3 col-sm-3 col-xs-12 isotopeSelector 500px' id='not_logged_in'>";
+                //_notLogg = _notLogg+"<article class='item-box'>";
+                //_notLogg = _notLogg+"<figure>";
+                //_notLogg = _notLogg+"<div class='notloggedin'>";
+                //_notLogg = _notLogg+"<a href='#' id='login'>Connect to 500px</a>";
+                //_notLogg = _notLogg+"</div>"
+                //_notLogg = _notLogg+"</figure>"
+                //_notLogg = _notLogg+"</article>"
+                //_notLogg = _notLogg+"</div>"
+                //$('#not_logged_in').append(_notLogg);
+                $('#not_logged_in').show();
+                $('#logged_in').hide();
+                $('#logged_in').html('');
+            });
+            // If the user has already logged in & authorized your application, this will fire an 'authorization_obtained' event
+            _500px.getAuthorizationStatus();
+            // If the user clicks the login link, log them in
+            $('#login').click(_500px.login);
+        });
+    </script>
+
+
+
+    <div id="not_logged_in">
+        <h1>500px photos</h1>
+
+        <a href="#" id="login">Connect to 500px</a>
+    </div>
+    <div id="logged_in" style="display: none;">
+    </div>
+    <!-- /Popular photos/videos -->
+
+    <section class="filter-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <h1>Popular <strong>photos/videos</strong></h1>
+                    <div class="filter-container isotopeFilters">
+                        <ul class="list-inline filter">
+                            <li class="active"><a href="#" data-filter="*">All </a></li>
+                            <li><a href="#" data-filter=".500px">500px</a></li>
+                            <li><a href="#" data-filter=".youtube">YouTube</a></li>
+                            <li><a href="#" data-filter=".vimeo">Vimeo</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio-section port-col">
+        <div class="container">
+            <div class="row">
+                <div class="isotopeContainer" id="isotopeContainer">
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- /Popular photos/videos -->
+  
+</body>
+
+</html>
