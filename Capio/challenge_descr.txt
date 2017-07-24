@@ -1,0 +1,34 @@
+Capio Python Backend Coding Challenge
+At Capio we build backend modules in Python to process data for many purposes, including formatting for customers, data analysis to improve our speech recognition system and evaluation of the recognition system. 
+Objective
+In this challenge, we would like you to design and implement “Word Exporter”, a Python script to process Capio’s speech recognition results into Microsoft Word document. The script should retrieve a transcript in JSON from Capio’s speech service and then should convert it into a MS Word document. 
+Example
+To start playing with, let’s take a look at one example. In this challenge, you can use API key “262ac9a0c9ba4d179aad4c0b9b02120a” to make a request to Capio API. Retrieve an example transcript by a curl in the following format, using the API key and transcript ID “593f237fbcae700012ba8fcd” below:
+curl -X GET https://api.capio.ai/v1/speech/transcript/<transcript_id> --header "apiKey: <api_key>"
+To understand the structure of transcript, see Capio API documentation:
+https://capio.readme.io/docs/transcription-rest-api
+
+
+Then, for comparison, check the Word document of this transcript below:
+http://exporter.capio.ai/593f237fbcae700012ba8fcd/262ac9a0c9ba4d179aad4c0b9b02120a
+Minimum Requirements
+Below is the minimum requirements.
+Create a repository on Github/Bitbucket or any Git service.
+Use Python. Feel free to use any open source modules available on pip etc... Provide the list of required modules like requirements.txt so that we can run your deliverable easily.
+Create a script that takes API key and transaction ID on Capio’s system and saves the transcript in MS Word document. Words with confidence measures less than 75% are highlighted in red.
+Format of MS Word document:
+Each line should contain a transcript of one result (the sample above have 45 results as indexed in “result_index”) and the timestamp of the beginning of the result.
+Bonus points
+After you implement all the requirements above, you can earn bonus points by implementing the ideas below:
+Testing: Write testable code, select an appropriate testing framework for your script.
+Web server: make your script to be a web server like what we run as “exporter.capio.ai”.
+Containerize: make your script or web server containerized (Docker is preferred).
+Advanced Word formatting: replicate the formatting of “exporter.capio.ai” or add your own idea. Tips - the red words in the sample Word document are the words that have low confidence.
+Deliverables
+You have an upper limit of 24 hours to complete working on the challenge. However, feel free to complete it sooner.
+Create a README in the project root with steps outlined to:
+Install dependencies
+Run the script or a server
+Run tests
+Send the repository URL to us
+ 

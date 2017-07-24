@@ -1,0 +1,3 @@
+===> 07/21: 
+    Done: Almost completed
+    ToDo: Print ot the sentence length, and each sentence out f the 45 results. Then display in word.

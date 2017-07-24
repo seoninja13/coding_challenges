@@ -17,7 +17,7 @@ petsList=[ Pet(name='Spot', species='dog', food_cost=5.00, noise='woof'),
 petsListNew=[]
 
 # Task #3
-def sumFoodCost(list1):
+ def sumFoodCost(list1):
     sum=0
     for pet in list1:
         sum+=pet.food_cost
